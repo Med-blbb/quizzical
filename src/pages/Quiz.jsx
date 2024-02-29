@@ -29,7 +29,7 @@ export default function Quiz() {
           const response = await dispatch(
             getQuestions({ category, amount, difficulty })
           );
-          const fetchedQuestions = response.payload; // Assuming payload contains the actual data
+          const fetchedQuestions = response.payload;
 
           if (Array.isArray(fetchedQuestions)) {
             const formattedQuestions = fetchedQuestions.map((q) => ({
