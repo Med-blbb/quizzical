@@ -8,6 +8,16 @@ export const getCategories = createAsyncThunk(
     return res.data;
   }
 );
+export const getQuestions = createAsyncThunk(
+  "questions/getQuestions",
+  async ({ category, amount, difficulty }) => {
+    const res = await axios.get(
+      `https://opentdb.com/api.php?amount=${amount}&category=${category}&difficulty=${difficulty}`
+    );
+    const claimed = res.data.results;
+    return claimed;
+  }
+);
 
 const QuizSlice = createSlice({
   name: "quiz",
@@ -17,7 +27,7 @@ const QuizSlice = createSlice({
     amount: "",
     questions: [],
     categories: [],
-    loading: false, 
+    loading: true,
     error: null,
   },
   reducers: {
@@ -33,13 +43,16 @@ const QuizSlice = createSlice({
     changeQuestions: (state, action) => {
       state.questions = action.payload;
     },
+    changeLoading: (state, action) => {
+      state.loading = action.payload;
+    },
   },
   extraReducers: (builder) => {
     builder.addCase(getCategories.fulfilled, (state, action) => {
       state.categories = action.payload;
       state.loading = false;
     });
-    builder.addCase(getCategories.pending, (state, action) => {
+    builder.addCase(getCategories.pending, (state) => {
       state.loading = true;
       state.error = null;
     });
@@ -47,10 +60,19 @@ const QuizSlice = createSlice({
       state.loading = false;
       state.error = action.error.message;
     });
+    builder.addCase(getQuestions.fulfilled, (state, action) => {
+      state.questions = action.payload;
+      state.loading = false;
+    });
   },
 });
 
-export const { changeCategory, changeDifficulty, changeAmount, changeQuestions } =
-  QuizSlice.actions;
+export const {
+  changeCategory,
+  changeDifficulty,
+  changeAmount,
+  changeLoading,
+  changeQuestions,
+} = QuizSlice.actions;
 
 export default QuizSlice.reducer;
