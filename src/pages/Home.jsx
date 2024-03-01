@@ -24,11 +24,8 @@ const Home = () => {
   const [selectedDifficulty, setselectedDifficulty] = useState(selectedDiff);
   const [selectAmount, setSelectedAmount] = useState(selectAm);
   useEffect(() => {
-    dispatch(changeLoading(true));
-
     setTimeout(async () => {
       dispatch(getCategories());
-      dispatch(changeLoading(false));
     }, 2000);
   }, []);
   const handleDifficultyChange = (e) => {
