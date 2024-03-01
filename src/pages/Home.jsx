@@ -18,17 +18,14 @@ const Home = () => {
   const categories = useSelector(
     (state) => state.quiz.categories?.trivia_categories || []
   );
-  const amount = useSelector((state)=>state.quiz.amount)
-  const loading = useSelector((state) => state.quiz.loading);
-  const SelectedCat = useSelector((state) => state.quiz.selectedCategory || "");
-  const selectedDiff = useSelector((state) => state.quiz.difficulty);
-  const selectAm = useSelector((state) => state.quiz.amount);
+  const quiz = useSelector((state) => state.quiz);
+  let { amount, loading, SelectedCat, selectedDiff, selectAm } = quiz;
   const [selectedCategory, setSelectedCategory] = useState(SelectedCat);
   const [selectedDifficulty, setselectedDifficulty] = useState(selectedDiff);
   const [selectAmount, setSelectedAmount] = useState(selectAm);
   useEffect(() => {
     dispatch(changeLoading(true));
-    
+
     setTimeout(async () => {
       dispatch(getCategories());
       dispatch(changeLoading(false));
@@ -45,7 +42,7 @@ const Home = () => {
   };
   const handleAmountChange = (e) => {
     const selectedValue = e.target.value;
-    setSelectedAmount(selectedValue)
+    setSelectedAmount(selectedValue);
     dispatch(changeAmount(selectedValue));
   };
 
@@ -54,20 +51,15 @@ const Home = () => {
       {loading ? (
         <Loader />
       ) : (
-        <div className="Home">
+        <div className="home">
           <div className="nav-bar-home">
-            <div>
-              <h1>Quizzical</h1>
-            </div>
+            <h1>
+              Qui<span>zz</span>ical
+            </h1>
           </div>
 
           <div>
-            <select
-              name=""
-              id=""
-              value={selectedCategory}
-              onChange={handleCategoryChange}
-            >
+            <select value={selectedCategory} onChange={handleCategoryChange}>
               <option value="">Any Category</option>
               {categories.map((cat) => (
                 <option key={cat.id} value={cat.id}>
@@ -87,50 +79,25 @@ const Home = () => {
             <input
               type="text"
               placeholder="Enter the Amount"
-              name=""
-              id=""
               value={selectAm}
               onChange={handleAmountChange}
             />
           </div>
           <div className="all-card">
             {categories.map((cat) => (
-              <div className="card">
-                <div>
-                  <img src={`/images/${cat.id}.jpeg`} alt="" />
-                </div>
-                <div>{cat.name}</div>
-                <div>
-                  <button onClick={() => dispatch(changeCategory(cat.id))}>
-                    Select this category
-                  </button>
-                </div>
-                <div>
-                  <button onClick={() => dispatch(changeDifficulty("easy"))}>
-                    Easy
-                  </button>
-                  <button onClick={() => dispatch(changeDifficulty("medium"))}>
-                    Medium
-                  </button>
-                  <button onClick={() => dispatch(changeDifficulty("hard"))}>
-                    Hard
-                  </button>
-                </div>
-                <div>
-                  <input
-                    type="number"
-                    placeholder="Enter How Many Questions"
-                    onChange={handleAmountChange}
-                    value={selectAm}
-                  />
-                </div>
+              <div
+                className="card"
+                style={{ backgroundImage: `url(./images/${cat.id}.jpeg)` }}
+              >
+                <div className="category--name">{cat.name}</div>
                 <button>
-                  <Link to={"quiz"}>Start</Link>
+                  <Link to={"quiz"} className="link">
+                    Pick category
+                  </Link>
                 </button>
               </div>
             ))}
           </div>
-          <div></div>
         </div>
       )}
     </div>
