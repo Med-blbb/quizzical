@@ -8,7 +8,7 @@ import {
 } from "../redux/QuizSlice";
 import Loader from "../components/Loader";
 import { Link } from "react-router-dom";
-import "../components/QuizStyle.css"
+import "../components/QuizStyle.css";
 
 export default function Quiz() {
   const dispatch = useDispatch();
@@ -155,6 +155,11 @@ export default function Quiz() {
         <Loader />
       ) : (
         <div className="all-quiz">
+          <div className="nav-bar-home">
+            <h1>
+              Qui<span>zz</span>ical
+            </h1>
+          </div>
           <div className="questions-container">{questionsElements}</div>
 
           <div className="text-center">
@@ -168,9 +173,13 @@ export default function Quiz() {
               <div>
                 <button className="check-btn" onClick={checkAnswers}>
                   Check answers
-                </button><button className="play-again-btn" onClick={()=>window.location.reload()}>
-                <Link to="/">
-                Cancel quiz</Link></button>
+                </button>
+                <button
+                  className="play-again-btn"
+                  onClick={() => window.location.reload()}
+                >
+                  <Link className="cancel-link" to="/">Cancel quiz</Link>
+                </button>
               </div>
             )}
           </div>
@@ -178,11 +187,18 @@ export default function Quiz() {
           {showResult && (
             <div className="result-container">
               <p className="result-message">
-                You scored {numCorrectAnswers}/{amount} correct answers.
+                You scored {numCorrectAnswers}/{amount} correct answers {numCorrectAnswers*100/amount}%.
               </p>
-              <button className="play-again-btn" onClick={playAgain}>
-                Play again
-              </button>
+              <div className="result-btn-grp">
+                <button className="play-again-btn" onClick={playAgain}>
+                  Play again
+                </button>
+                <Link to="/">
+                  <button className="" onClick={playAgain}>
+                    HOME
+                  </button>
+                </Link>
+              </div>
             </div>
           )}
         </div>

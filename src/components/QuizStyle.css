@@ -1,4 +1,3 @@
-
 :root {
   --text: #f2ebfa;
   --background: #0f0e11;
@@ -9,9 +8,49 @@
   --large: "Noto Sans", sans-serif;
   --small: "Mukta Vaani", sans-serif;
 }
-.all-quiz{
-    color: var(--text);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+.all-quiz {
+  color: var(--text);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.questions-container {
+  margin-top: 10%;
+}
+.all-quiz button {
+  z-index: 20;
+  border: 0;
+  font-family: var(--small);
+  background-color: var(--primary);
+  border-radius: 8px;
+  padding: 8px 0;
+  cursor: pointer;
+  width: 150px;
+
+  transition: 0.5s;
+}
+.all-quiz .cancel-link {
+  color: var(--text);
+  text-transform: uppercase;
+  font-size: 18px;
+  text-decoration: none;
+}
+.check-btn {
+  color: var(--text);
+  text-transform: uppercase;
+  font-size: 18px;
+  text-decoration: none;
+}
+.result-container button:hover {
+  background-color: var(--accent);
+  cursor: pointer;
+  transition: 0.5s;
+}
+.result-btn-grp {
+  display: flex;
+  justify-content: space-between;
+  
+}
+.play-again-btn {
+  
 }
