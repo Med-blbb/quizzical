@@ -50,11 +50,16 @@ export default function Category() {
   };
   const handleStart = () => {
     console.log("Start button clicked!");
-    if (difficulty.length == "" || amount.length == "") {
+    if (difficulty.length == "" ) {
       window.alert(
         "Please select a difficulty level before starting the quiz."
       );
     }
+     if (amount.length == "") {
+       window.alert(
+         "Please select a question number before starting the quiz."
+       );
+     }
   };
 
   return (
