@@ -162,7 +162,7 @@ export default function Quiz() {
           </div>
           <div className="questions-container">{questionsElements}</div>
 
-          <div className="text-center">
+          <div className="button-ch-container">
             {showWarning && (
               <p className="warning-message">
                 There are questions not answered yet.
@@ -170,7 +170,7 @@ export default function Quiz() {
             )}
 
             {questions.length > 0 && !showResult && (
-              <div>
+              <div className="check-btn-grp">
                 <button className="check-btn" onClick={checkAnswers}>
                   Check answers
                 </button>
@@ -178,7 +178,9 @@ export default function Quiz() {
                   className="play-again-btn"
                   onClick={() => window.location.reload()}
                 >
-                  <Link className="cancel-link" to="/">Cancel quiz</Link>
+                  <Link className="cancel-link" to="/">
+                    Cancel quiz
+                  </Link>
                 </button>
               </div>
             )}
@@ -187,7 +189,8 @@ export default function Quiz() {
           {showResult && (
             <div className="result-container">
               <p className="result-message">
-                You scored {numCorrectAnswers}/{amount} correct answers {numCorrectAnswers*100/amount}%.
+                You scored {numCorrectAnswers}/{amount} correct answers{" "}
+                {(numCorrectAnswers * 100) / amount}%.
               </p>
               <div className="result-btn-grp">
                 <button className="play-again-btn" onClick={playAgain}>

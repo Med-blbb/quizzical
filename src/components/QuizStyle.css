@@ -24,22 +24,31 @@
   background-color: var(--primary);
   border-radius: 8px;
   padding: 8px 0;
+  color: var(--text);
   cursor: pointer;
   width: 150px;
-
+  text-transform: uppercase;
   transition: 0.5s;
 }
 .all-quiz .cancel-link {
-  color: var(--text);
+  color: white;
   text-transform: uppercase;
-  font-size: 18px;
+
   text-decoration: none;
+  font-family: var(--small);
 }
 .check-btn {
   color: var(--text);
   text-transform: uppercase;
-  font-size: 18px;
+
+  font-family: var(--small);
   text-decoration: none;
+}
+.result-container {
+  width: 50%;
+  /* outline: 1px solid red; */
+  margin-left: 13%;
+  justify-content: center;
 }
 .result-container button:hover {
   background-color: var(--accent);
@@ -49,8 +58,20 @@
 .result-btn-grp {
   display: flex;
   justify-content: space-between;
-  
+  /* outline: solid red; */
+  width: 65%;
 }
-.play-again-btn {
-  
+
+.check-btn-grp {
+  display: flex;
+  justify-content: space-between;
+  width: 65%;
+}
+
+.button-ch-container {
+  width: 50%;
+  margin-top: 2%;
+  /* outline: 1px solid red; */
+  margin-left: 13%;
+  justify-content: center;
 }
