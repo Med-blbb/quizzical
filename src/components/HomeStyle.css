@@ -10,7 +10,7 @@
 }
 
 * {
-  box-sizing: border-box;
+  /* box-sizing: border-box; */
   margin: 0;
   padding: 0;
   /* outline: red 1px solid; */
@@ -18,6 +18,8 @@
 .home {
   background-color: var(--background);
   padding: 50px 30px;
+  margin: 0;
+  box-sizing: border-box;
   padding-top: 100px;
 }
 .nav-bar-home {
@@ -98,6 +100,7 @@
   padding: 8px 0;
   position: absolute;
   bottom: 5px;
+  margin-left: -173px;
   width: calc(100% - 10px);
   opacity: 0;
   transition: 0.5s;
@@ -105,8 +108,9 @@
 .card button:hover {
   background-color: var(--accent);
   transition: 0.5s;
+  cursor: pointer;
 }
-.card button .link {
+.card .link button {
   color: var(--text);
   text-transform: uppercase;
   font-size: 18px;

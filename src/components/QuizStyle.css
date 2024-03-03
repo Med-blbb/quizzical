@@ -1,0 +1,17 @@
+
+:root {
+  --text: #f2ebfa;
+  --background: #0f0e11;
+  --primary: #995dd5;
+  --secondary: #d55dd5;
+  --accent: #5d5dd5;
+
+  --large: "Noto Sans", sans-serif;
+  --small: "Mukta Vaani", sans-serif;
+}
+.all-quiz{
+    color: var(--text);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}

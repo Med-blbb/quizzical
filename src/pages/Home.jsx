@@ -5,7 +5,6 @@ import {
   changeCategory,
   changeDifficulty,
   changeAmount,
-  changeLoading,
 } from "../redux/QuizSlice";
 import { Link } from "react-router-dom";
 import Loader from "../components/Loader";
@@ -42,7 +41,7 @@ const Home = () => {
     setSelectedAmount(selectedValue);
     dispatch(changeAmount(selectedValue));
   };
-
+  console.log(categories);
   return (
     <div>
       {loading ? (
@@ -55,43 +54,19 @@ const Home = () => {
             </h1>
           </div>
 
-          <div>
-            <select value={selectedCategory} onChange={handleCategoryChange}>
-              <option value="">Any Category</option>
-              {categories.map((cat) => (
-                <option key={cat.id} value={cat.id}>
-                  {cat.name}
-                </option>
-              ))}
-            </select>
-            <select
-              value={selectedDifficulty}
-              onChange={handleDifficultyChange}
-            >
-              <option value="">Select the Difficulty</option>
-              <option value="easy">Easy</option>
-              <option value="medium">Medium</option>
-              <option value="hard">Hard</option>
-            </select>
-            <input
-              type="text"
-              placeholder="Enter the Amount"
-              value={selectAm}
-              onChange={handleAmountChange}
-            />
-          </div>
           <div className="all-card">
             {categories.map((cat) => (
               <div
                 className="card"
                 style={{ backgroundImage: `url(./images/${cat.id}.jpeg)` }}
+                key={cat.id}
               >
                 <div className="category--name">{cat.name}</div>
-                <button>
-                  <Link to={"quiz"} className="link">
+                <Link to={`category/${cat.id}`} className="link">
+                  <button onClick={() => dispatch(changeCategory(cat.id))}>
                     Pick category
-                  </Link>
-                </button>
+                  </button>
+                </Link>
               </div>
             ))}
           </div>

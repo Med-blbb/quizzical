@@ -8,6 +8,7 @@ import {
 } from "../redux/QuizSlice";
 import Loader from "../components/Loader";
 import { Link } from "react-router-dom";
+import "../components/QuizStyle.css"
 
 export default function Quiz() {
   const dispatch = useDispatch();
@@ -153,7 +154,7 @@ export default function Quiz() {
       {loading ? (
         <Loader />
       ) : (
-        <div>
+        <div className="all-quiz">
           <div className="questions-container">{questionsElements}</div>
 
           <div className="text-center">

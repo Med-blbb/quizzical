@@ -1,0 +1,68 @@
+:root {
+  --text: #f2ebfa;
+  --background: #0f0e11;
+  --primary: #995dd5;
+  --secondary: #d55dd5;
+  --accent: #5d5dd5;
+
+  --large: "Noto Sans", sans-serif;
+  --small: "Mukta Vaani", sans-serif;
+}
+
+body {
+  background-color: var(--background);
+}
+.page-cat {
+  width: 100%;
+  background-color: var(--background);
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.cat-card-img {
+  width: 700px;
+  height: 400px;
+  object-fit: cover;
+}
+.cat-card {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  margin-top: 150px;
+  gap: 20px;
+}
+.cat-card .title {
+  color: var(--text);
+  font-family: var(--large);
+}
+.cat-card button {
+  z-index: 20;
+  border: 0;
+  font-family: var(--small);
+  background-color: var(--primary);
+  border-radius: 8px;
+  padding: 8px 0;
+  position: absolute;
+
+  width: 250px;
+
+  transition: 0.5s;
+}
+.cat-card button:hover {
+  background-color: var(--accent);
+  cursor: pointer;
+  transition: 0.5s;
+}
+.cat-card .cat-link button {
+  color: var(--text);
+  text-transform: uppercase;
+  font-size: 18px;
+  text-decoration: none;
+}
+.btn-grp {
+  display: flex;
+  justify-content: space-between;
+  width: 60%;
+}
