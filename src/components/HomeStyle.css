@@ -98,9 +98,9 @@
   background-color: var(--primary);
   border-radius: 8px;
   padding: 8px 0;
+  margin-left: -48%;
   position: absolute;
   bottom: 5px;
-  margin-left: -173px;
   width: calc(100% - 10px);
   opacity: 0;
   transition: 0.5s;
