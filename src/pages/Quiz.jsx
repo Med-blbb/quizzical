@@ -129,24 +129,24 @@ export default function Quiz() {
   const questionsElements = QandA.map((questionObject, index) => (
     <div key={index} className="question">
       <p>{questionObject.question}</p>
-      <ul>
+      <div className="aswr-btn-grp">
         {questionObject.shuffledAnswers.map((answer, answerIndex) => (
-          <li key={answerIndex}>
+          <div key={answerIndex}>
             <label>
-              <input
-                type="radio"
+              <button
                 name={`question-${index}`}
                 value={answer}
                 onChange={(e) =>
                   updateAnswer(questionObject.question, e.target.value)
                 }
                 checked={questionObject.selectedAnswer === answer}
-              />
-              {answer}
+              >
+                {answer}
+              </button>
             </label>
-          </li>
+          </div>
         ))}
-      </ul>
+      </div>
     </div>
   ));
   return (

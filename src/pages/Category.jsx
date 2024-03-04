@@ -9,13 +9,15 @@ import {
   getCategories,
 } from "../redux/QuizSlice";
 import Loader from "../components/Loader";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import "../components/CategoryStyle.css";
 
 export default function Category() {
   const { id } = useParams();
   const [category, setCategory] = useState();
   const dispatch = useDispatch();
-  
+
   const [selectedDifficulty, setselectedDifficulty] = useState("");
   const [selectedAmount, setSelectedAmount] = useState();
   const loading = useSelector((state) => state.quiz.loading);
@@ -48,18 +50,16 @@ export default function Category() {
     setSelectedAmount(selectedValue);
     dispatch(changeAmount(selectedValue));
   };
+  const notifyDiff = () => toast("Select the difficulty before start!");
+  const notifyNum = () => toast("Select the question numbers start!");
   const handleStart = () => {
     console.log("Start button clicked!");
-    if (difficulty.length == "" ) {
-      window.alert(
-        "Please select a difficulty level before starting the quiz."
-      );
+    if (difficulty.length == "") {
+      notifyDiff();
     }
-     if (amount.length == "") {
-       window.alert(
-         "Please select a question number before starting the quiz."
-       );
-     }
+    if (amount.length == "") {
+      notifyNum();
+    }
   };
 
   return (
@@ -103,6 +103,7 @@ export default function Category() {
                 to={difficulty.length > 0 && amount.length > 0 ? "/quiz" : "#"}
               >
                 <button onClick={handleStart}>Start Quiz</button>
+                <ToastContainer />
               </Link>
             </div>
           </div>
