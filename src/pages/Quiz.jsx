@@ -128,23 +128,16 @@ export default function Quiz() {
 
   const questionsElements = QandA.map((questionObject, index) => (
     <div key={index} className="question">
-      <p>{questionObject.question}</p>
-      <div className="aswr-btn-grp">
-        {questionObject.shuffledAnswers.map((answer, answerIndex) => (
-          <div key={answerIndex}>
-            <label>
-              <button
-                name={`question-${index}`}
-                value={answer}
-                onChange={(e) =>
-                  updateAnswer(questionObject.question, e.target.value)
-                }
-                checked={questionObject.selectedAnswer === answer}
-              >
-                {answer}
-              </button>
-            </label>
-          </div>
+      <h3>{questionObject.question}</h3>
+      <div className="answers-btn-container">
+        {questionObject.shuffledAnswers.map((answer, index) => (
+          <button
+            key={index}
+            onClick={(e) =>
+              updateAnswer(questionObject.question, e.target.value)
+            }
+            checked={questionObject.selectedAnswer === answer}
+          >{answer}</button>
         ))}
       </div>
     </div>
