@@ -120,28 +120,42 @@ export default function Quiz() {
     setNumCorrectAnswers(0);
   }
 
-  console.log(questions);
-  console.log(category);
-  console.log(difficulty);
-  console.log(amount);
-  console.log(loading);
+  console.log(QandA);
 
   const questionsElements = QandA.map((questionObject, index) => (
     <div key={index} className="question">
       <h3>{questionObject.question}</h3>
-      <div className="answers-btn-container">
-        {questionObject.shuffledAnswers.map((answer, index) => (
+      <div className="button-group">
+        {questionObject.shuffledAnswers.map((answer, answerIndex) => (
           <button
-            key={index}
-            onClick={(e) =>
-              updateAnswer(questionObject.question, e.target.value)
-            }
-            checked={questionObject.selectedAnswer === answer}
-          >{answer}</button>
+            key={answerIndex}
+            onClick={() => updateAnswer(questionObject.question, answer)}
+            className={`answer-btn ${
+              answer === questionObject.selectedAnswer ? "selected" : ""
+            } ${
+              showResult && answer === questionObject.correctAnswer
+                ? "correct"
+                : ""
+            } ${
+              showResult &&
+              answer === questionObject.selectedAnswer &&
+              answer !== questionObject.correctAnswer
+                ? "incorrect"
+                : ""
+            } ${
+              showResult && answer !== questionObject.correctAnswer
+                ? "dimmed"
+                : ""
+            }`}
+            disabled={showResult}
+          >
+            {answer}
+          </button>
         ))}
       </div>
     </div>
   ));
+
   return (
     <div>
       {loading ? (
