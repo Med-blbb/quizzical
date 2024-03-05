@@ -82,3 +82,47 @@ body {
   width: 100%;
   text-align: center;
 }
+
+@media screen and (max-width: 480px) {
+  .cat-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 90%;
+    height: 650px;
+
+    margin-top: 100px;
+    gap: 20px;
+  }
+  .cat-card-img {
+    width: 100%;
+  }
+  .cat-card select {
+    border: 2px solid var(--secondary-color);
+    border-radius: 5px;
+    cursor: pointer;
+    height: 40px;
+    margin-left: 10px;
+    outline: none;
+    padding: 0.5rem;
+    text-align: center;
+  }
+  .btn-grp {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 60px;
+    width: 100%;
+  }
+  .cat-card button {
+    border: 0;
+    font-family: var(--small);
+    background-color: var(--primary);
+    border-radius: 8px;
+    margin-left: -115px;
+
+    width: 90%;
+
+    transition: 0.5s;
+  }
+}
