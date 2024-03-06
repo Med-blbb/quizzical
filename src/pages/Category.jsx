@@ -15,16 +15,23 @@ import "../components/CategoryStyle.css";
 
 export default function Category() {
   const { id } = useParams();
+
   const [category, setCategory] = useState();
+
   const dispatch = useDispatch();
 
   const [selectedDifficulty, setselectedDifficulty] = useState("");
+
   const [selectedAmount, setSelectedAmount] = useState();
+
   const loading = useSelector((state) => state.quiz.loading);
+
   const categories = useSelector(
     (state) => state.quiz.categories?.trivia_categories || []
   );
+
   const difficulty = useSelector((state) => state.quiz.difficulty);
+
   const amount = useSelector((state) => state.quiz.amount);
 
   useEffect(() => {
@@ -38,6 +45,7 @@ export default function Category() {
     setCategory(foundCategory);
     dispatch(changeCategory(id));
   }, [id, categories]);
+
   const handleDifficultyChange = (e) => {
     const selectedValue = e.target.value;
     console.log("Selected Difficulty:", selectedValue);
@@ -50,8 +58,11 @@ export default function Category() {
     setSelectedAmount(selectedValue);
     dispatch(changeAmount(selectedValue));
   };
+
   const notifyDiff = () => toast("Select the difficulty before start!");
+
   const notifyNum = () => toast("Select the question numbers start!");
+
   const handleStart = () => {
     console.log("Start button clicked!");
     if (difficulty.length == "") {

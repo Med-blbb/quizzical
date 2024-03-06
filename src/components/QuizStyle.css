@@ -8,15 +8,19 @@
   --large: "Noto Sans", sans-serif;
   --small: "Mukta Vaani", sans-serif;
 }
+
 .all-quiz {
   color: var(--text);
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding-bottom: 100px;
 }
+
 .questions-container {
   margin-top: 10%;
 }
+
 .all-quiz button {
   z-index: 20;
   border: 0;
@@ -30,6 +34,7 @@
   text-transform: uppercase;
   transition: 0.5s;
 }
+
 .all-quiz .cancel-link {
   color: white;
   text-transform: uppercase;
@@ -37,49 +42,52 @@
   text-decoration: none;
   font-family: var(--small);
 }
+
 .check-btn {
   color: var(--text);
   text-transform: uppercase;
-
   font-family: var(--small);
   text-decoration: none;
 }
+
 .result-container {
-  width: 50%;
-  /* outline: 1px solid red; */
-  margin-left: 13%;
-  justify-content: center;
+  width: 100%;
+  text-align: center;
 }
+
 .result-container button:hover {
   background-color: var(--accent);
   cursor: pointer;
   transition: 0.5s;
 }
+
 .result-btn-grp {
   display: flex;
-  justify-content: space-between;
   /* outline: solid red; */
-  width: 65%;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 10px;
 }
 
 .check-btn-grp {
   display: flex;
-  justify-content: space-between;
-  width: 65%;
+  gap: 10px;
+  width: 100%;
+  margin-top: 10px;
+  justify-content: center;
 }
 
 .button-ch-container {
   width: 50%;
-  margin-top: 2%;
   /* outline: 1px solid red; */
-  margin-left: 13%;
   justify-content: center;
+  text-align: center;
 }
 .question {
   /* outline: solid red; */
   width: 950px;
-  margin-left: 150px;
   margin-top: 15px;
+  margin-bottom: 40px;
 }
 .question button {
   border: 1px solid #4d5b9e;
@@ -99,10 +107,12 @@
   background-color: transparent;
   font-family: "Inter", sans-serif;
   font-weight: 500;
-
+  width: 100% !important;
   font-size: 14px;
   color: white;
   padding: 4px 14px;
+  text-transform: capitalize !important;
+  text-align: start !important;
 }
 
 .answer-btn.selected {
@@ -125,10 +135,10 @@
   opacity: 0.5;
 }
 .button-group {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 50px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-auto-rows: 50px;
+  gap: 10px;
   margin-top: 14px;
   /* outline: solid blue; */
 }
-

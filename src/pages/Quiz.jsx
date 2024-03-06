@@ -9,6 +9,7 @@ import {
 import Loader from "../components/Loader";
 import { Link } from "react-router-dom";
 import "../components/QuizStyle.css";
+import { Box, Button, Modal, Typography } from "@mui/material";
 
 export default function Quiz() {
   const dispatch = useDispatch();
@@ -54,7 +55,7 @@ export default function Quiz() {
         } finally {
           dispatch(changeLoading(false));
         }
-      }, 1000);
+      }, 500);
     }
   }, [dispatch, questions, category, difficulty, amount]);
 
@@ -121,10 +122,12 @@ export default function Quiz() {
   }
 
   console.log(QandA);
-
+  let abcd = ["a", "b", "c", "d"];
   const questionsElements = QandA.map((questionObject, index) => (
     <div key={index} className="question">
-      <h3>{questionObject.question}</h3>
+      <h3>
+        {index + 1} - {questionObject.question}
+      </h3>
       <div className="button-group">
         {questionObject.shuffledAnswers.map((answer, answerIndex) => (
           <button
@@ -149,7 +152,7 @@ export default function Quiz() {
             }`}
             disabled={showResult}
           >
-            {answer}
+            {abcd[answerIndex]} - {answer}
           </button>
         ))}
       </div>
