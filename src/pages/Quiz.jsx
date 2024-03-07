@@ -7,29 +7,30 @@ import {
   getQuestions,
 } from "../redux/QuizSlice";
 import Loader from "../components/Loader";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import "../components/QuizStyle.css";
 import { Box, Button, Modal, Typography } from "@mui/material";
 
 export default function Quiz() {
   const dispatch = useDispatch();
+  const { id, difficulty, amount } = useParams();
   const loading = useSelector((state) => state.quiz.loading);
-  const category = useSelector((state) => state.quiz.selectedCategory);
-  const difficulty = useSelector((state) => state.quiz.difficulty);
-  const amount = useSelector((state) => state.quiz.amount);
+  // const category = useSelector((state) => state.quiz.selectedCategory);
+  // const difficulty = useSelector((state) => state.quiz.difficulty);
+  // const amount = useSelector((state) => state.quiz.amount);
   const questions = useSelector((state) => state.quiz.questions);
   const [QandA, setQandA] = useState([]);
   const [showWarning, setShowWarning] = useState(false);
   const [numCorrectAnswers, setNumCorrectAnswers] = useState(0);
   const [showResult, setShowResult] = useState(false);
-
+  console.log("id", id, difficulty, amount);
   useEffect(() => {
-    if (questions.length === 0 && category && difficulty && amount) {
+    if (questions.length === 0 && id && difficulty && amount) {
       dispatch(changeLoading(true));
       setTimeout(async () => {
         try {
           const response = await dispatch(
-            getQuestions({ category, amount, difficulty })
+            getQuestions({ id, amount, difficulty })
           );
           const fetchedQuestions = response.payload;
 
@@ -55,9 +56,9 @@ export default function Quiz() {
         } finally {
           dispatch(changeLoading(false));
         }
-      }, 500);
+      }, 2000);
     }
-  }, [dispatch, questions, category, difficulty, amount]);
+  }, [dispatch, questions,id, difficulty, amount]);
 
   function shuffle(array) {
     let currentIndex = array.length,

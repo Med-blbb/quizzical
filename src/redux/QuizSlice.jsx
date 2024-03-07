@@ -10,9 +10,9 @@ export const getCategories = createAsyncThunk(
 );
 export const getQuestions = createAsyncThunk(
   "questions/getQuestions",
-  async ({ category, amount, difficulty }) => {
+  async ({ id, amount, difficulty }) => {
     const res = await axios.get(
-      `https://opentdb.com/api.php?amount=${amount}&category=${category}&difficulty=${difficulty}`
+      `https://opentdb.com/api.php?amount=${amount}&category=${id}&difficulty=${difficulty}`
     );
     const claimed = res.data.results;
     return claimed;

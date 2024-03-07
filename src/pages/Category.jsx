@@ -36,7 +36,7 @@ export default function Category() {
 
   useEffect(() => {
     dispatch(changeLoading(true));
-    setTimeout(async () => dispatch(changeLoading(false)), 2000);
+    setTimeout(async () => dispatch(changeLoading(false)), 1000);
     dispatch(getCategories());
   }, [dispatch]);
 
@@ -111,7 +111,11 @@ export default function Category() {
               </Link>
               <Link
                 className="cat-link"
-                to={difficulty.length > 0 && amount.length > 0 ? "/quiz" : "#"}
+                to={
+                  difficulty.length > 0 && amount.length > 0
+                    ? `/quiz/${id}/${difficulty}/${amount}`
+                    : "#"
+                }
               >
                 <button onClick={handleStart}>Start Quiz</button>
                 <ToastContainer />
