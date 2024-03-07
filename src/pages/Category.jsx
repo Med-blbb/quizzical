@@ -113,7 +113,7 @@ export default function Category() {
                 className="cat-link"
                 to={
                   difficulty.length > 0 && amount.length > 0
-                    ? `/quiz/${id}/${difficulty}/${amount}`
+                    ? `/quiz/category/${id}/difficulty/${difficulty}/amount/${amount}`
                     : "#"
                 }
               >

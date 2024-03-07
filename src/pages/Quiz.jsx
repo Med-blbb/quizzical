@@ -56,9 +56,9 @@ export default function Quiz() {
         } finally {
           dispatch(changeLoading(false));
         }
-      }, 2000);
+      }, 500);
     }
-  }, [dispatch, questions,id, difficulty, amount]);
+  }, [dispatch, questions, id, difficulty, amount]);
 
   function shuffle(array) {
     let currentIndex = array.length,
