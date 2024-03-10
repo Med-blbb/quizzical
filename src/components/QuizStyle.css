@@ -231,3 +231,34 @@
 .button-group-light button {
   color: var(--background);
 }
+
+@media screen and (max-width: 480px) {
+  .question-dark {
+    width: 90%;
+    margin-top: 18%;
+    margin-left: 4%;
+  }
+  .question-light {
+    width: 90%;
+    margin-top: 18%;
+    margin-left: 4%;
+  }
+  .button-group-light {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 10px;
+  }
+  .button-group-dark {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 10px;
+  }
+  .button-group-light button {
+    padding: 14px 14px;
+  }
+  .button-group-dark button {
+    padding: 14px 14px;
+  }
+}
