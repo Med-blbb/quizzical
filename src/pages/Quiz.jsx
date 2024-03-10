@@ -132,7 +132,7 @@ export default function Quiz() {
     setShowResult(false);
     setNumCorrectAnswers(0);
   }
-
+//test
   console.log(QandA);
   let abcd = ["a", "b", "c", "d"];
   const questionsElements = QandA.map((questionObject, index) => (
