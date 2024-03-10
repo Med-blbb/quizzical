@@ -11,10 +11,22 @@
   height: calc(2 * var(--offset) + var(--square));
   background-color: var(--background);
 }
-.wrapper {
+:root {
+  --text: #f2ebfa;
+  --background: #0f0e11;
+}
+.wrapper-dark {
   width: 100%;
   height: 100vh;
   background-color: var(--background);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.wrapper-light {
+  width: 100%;
+  height: 100vh;
+  background-color: var(--text);
   display: flex;
   justify-content: center;
   align-items: center;

@@ -10,14 +10,13 @@ import Loader from "../components/Loader";
 import { Link, useParams } from "react-router-dom";
 import "../components/QuizStyle.css";
 import { Box, Button, Modal, Typography } from "@mui/material";
+import ThemeToggle from "../components/ThemeToggle";
 
 export default function Quiz() {
   const dispatch = useDispatch();
   const { id, difficulty, amount } = useParams();
+  const theme = useSelector((state) => state.quiz.theme);
   const loading = useSelector((state) => state.quiz.loading);
-  // const category = useSelector((state) => state.quiz.selectedCategory);
-  // const difficulty = useSelector((state) => state.quiz.difficulty);
-  // const amount = useSelector((state) => state.quiz.amount);
   const questions = useSelector((state) => state.quiz.questions);
   const [QandA, setQandA] = useState([]);
   const [showWarning, setShowWarning] = useState(false);
@@ -125,16 +124,16 @@ export default function Quiz() {
   console.log(QandA);
   let abcd = ["a", "b", "c", "d"];
   const questionsElements = QandA.map((questionObject, index) => (
-    <div key={index} className="question">
+    <div key={index} className={`question-${theme}`}>
       <h3>
         {index + 1} - {questionObject.question}
       </h3>
-      <div className="button-group">
+      <div className={`button-group-${theme}`}>
         {questionObject.shuffledAnswers.map((answer, answerIndex) => (
           <button
             key={answerIndex}
             onClick={() => updateAnswer(questionObject.question, answer)}
-            className={`answer-btn ${
+            className={`answer-btn-${theme} ${
               answer === questionObject.selectedAnswer ? "selected" : ""
             } ${
               showResult && answer === questionObject.correctAnswer
@@ -165,11 +164,16 @@ export default function Quiz() {
       {loading ? (
         <Loader />
       ) : (
-        <div className="all-quiz">
-          <div className="nav-bar-home">
-            <h1>
-              Qui<span>zz</span>ical
-            </h1>
+        <div className={`all-quiz-${theme}`}>
+          <div className={`nav-bar-home-${theme}`}>
+            <div>
+              <h1>
+                Qui<span>zz</span>ical
+              </h1>
+            </div>
+            <div className="theme-position">
+              <ThemeToggle />
+            </div>
           </div>
           <div className="questions-container">{questionsElements}</div>
 

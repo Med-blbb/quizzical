@@ -1,15 +1,17 @@
 import React from "react";
 import "./LoaderStyle.css";
+import { useSelector } from "react-redux";
 
 export default function Loader() {
+  const theme = useSelector((state) => state.quiz.theme);
   return (
-    <div className="wrapper">
-      <section class="dots-container">
-        <div class="dot"></div>
-        <div class="dot"></div>
-        <div class="dot"></div>
-        <div class="dot"></div>
-        <div class="dot"></div>
+    <div className={`wrapper-${theme}`}>
+      <section className="dots-container">
+        <div className="dot"></div>
+        <div className="dot"></div>
+        <div className="dot"></div>
+        <div className="dot"></div>
+        <div className="dot"></div>
       </section>
     </div>
   );

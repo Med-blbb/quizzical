@@ -25,6 +25,7 @@ const QuizSlice = createSlice({
     selectedCategory: "",
     difficulty: "",
     amount: "",
+    theme: "dark",
     questions: [],
     categories: [],
     loading: true,
@@ -45,6 +46,9 @@ const QuizSlice = createSlice({
     },
     changeLoading: (state, action) => {
       state.loading = action.payload;
+    },
+    changeTheme: (state, action) => {
+      state.theme = action.payload;
     },
   },
   extraReducers: (builder) => {
@@ -71,6 +75,7 @@ export const {
   changeCategory,
   changeDifficulty,
   changeAmount,
+  changeTheme,
   changeLoading,
   changeQuestions,
 } = QuizSlice.actions;

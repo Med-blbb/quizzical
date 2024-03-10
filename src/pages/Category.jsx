@@ -12,6 +12,7 @@ import Loader from "../components/Loader";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import "../components/CategoryStyle.css";
+import ThemeToggle from "../components/ThemeToggle";
 
 export default function Category() {
   const { id } = useParams();
@@ -29,6 +30,7 @@ export default function Category() {
   const categories = useSelector(
     (state) => state.quiz.categories?.trivia_categories || []
   );
+  const theme = useSelector((state) => state.quiz.theme);
 
   const difficulty = useSelector((state) => state.quiz.difficulty);
 
@@ -78,13 +80,18 @@ export default function Category() {
       {loading ? (
         <Loader />
       ) : (
-        <div className="page-cat">
-          <div className="nav-bar-home">
-            <h1>
-              Qui<span>zz</span>ical
-            </h1>
+        <div className={`page-cat-${theme}`}>
+          <div className={`nav-bar-home-${theme}`}>
+            <div>
+              <h1>
+                Qui<span>zz</span>ical
+              </h1>
+            </div>
+            <div className="theme-position">
+              <ThemeToggle />
+            </div>
           </div>
-          <div className="cat-card">
+          <div className={`cat-card-${theme}`}>
             <h1 className="title">
               {category ? category.name : "Category not found"}
             </h1>

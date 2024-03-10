@@ -13,7 +13,14 @@ body {
   background-color: var(--background);
   min-height: 100vh;
 }
-.page-cat {
+.page-cat-light {
+  width: 100%;
+  background-color:#e4dded;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.page-cat-dark {
   width: 100%;
   background-color: var(--background);
   display: flex;
@@ -27,7 +34,17 @@ body {
   object-fit: cover;
   border-radius: 25px;
 }
-.cat-card {
+.cat-card-light {
+  display: flex;
+  width: 600px;
+  background-color: #e4dded;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  margin: 140px 0 100px 0;
+  gap: 15px;
+}
+.cat-card-dark {
   display: flex;
   width: 600px;
   justify-content: center;
@@ -36,11 +53,26 @@ body {
   margin: 140px 0 100px 0;
   gap: 15px;
 }
-.cat-card .title {
+.cat-card-dark .title {
   color: var(--text);
   font-family: var(--large);
 }
-.cat-card button {
+.cat-card-light .title {
+  color: var(--background);
+  font-family: var(--large);
+}
+.cat-card-light button {
+  z-index: 20;
+  border: 0;
+  font-family: var(--small);
+  background-color: var(--primary);
+  border-radius: 8px;
+  padding: 8px 0;
+  width: 250px;
+  transition: 0.5s;
+  flex: 1;
+}
+.cat-card-dark button {
   z-index: 20;
   border: 0;
   font-family: var(--small);
@@ -52,18 +84,35 @@ body {
   flex: 1;
 }
 
-.cat-card button:hover {
+.cat-card-light button:hover {
   background-color: var(--accent);
   cursor: pointer;
   transition: 0.5s;
 }
-.cat-card .cat-link button {
+.cat-card-dark button:hover {
+  background-color: var(--accent);
+  cursor: pointer;
+  transition: 0.5s;
+}
+.cat-card-light .cat-link button {
   color: var(--text);
   text-transform: uppercase;
   font-size: 18px;
   text-decoration: none;
 }
-.cat-card .cat-link {
+.cat-card-dark .cat-link button {
+  color: var(--text);
+  text-transform: uppercase;
+  font-size: 18px;
+  text-decoration: none;
+}
+.cat-card-dark .cat-link {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  text-decoration: none;
+}
+.cat-card-light .cat-link {
   flex: 1;
   display: flex;
   justify-content: center;
@@ -75,7 +124,17 @@ body {
   gap: 15px;
 }
 
-.cat-card select {
+.cat-card-dark select {
+  border: 2px solid var(--secondary-color);
+  border-radius: 5px;
+  cursor: pointer;
+  height: 40px;
+  outline: none;
+  padding: 0.5rem;
+  width: 100%;
+  text-align: center;
+}
+.cat-card-light select {
   border: 2px solid var(--secondary-color);
   border-radius: 5px;
   cursor: pointer;
@@ -87,7 +146,17 @@ body {
 }
 
 @media screen and (max-width: 480px) {
-  .cat-card {
+  .cat-card-dark {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 90%;
+    height: 650px;
+
+    margin-top: 100px;
+    gap: 20px;
+  }
+  .cat-card-light {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -100,7 +169,16 @@ body {
   .cat-card-img {
     width: 100%;
   }
-  .cat-card select {
+  .cat-card-dark select {
+    border: 2px solid var(--secondary-color);
+    border-radius: 5px;
+    cursor: pointer;
+    height: 40px;
+    /* outline: none; */
+    padding: 0.5rem;
+    text-align: center;
+  }
+  .cat-card-light select {
     border: 2px solid var(--secondary-color);
     border-radius: 5px;
     cursor: pointer;
@@ -117,12 +195,22 @@ body {
     flex: 1;
     padding: 15px;
   }
-  .cat-card button {
+  .cat-card-dark button {
     flex: 1;
     border: 0;
     font-family: var(--small);
     background-color: var(--primary);
     border-radius: 8px;
+    height: 70%;
+    transition: 0.5s;
+  }
+  .cat-card-light button {
+    flex: 1;
+    border: 0;
+    font-family: var(--small);
+    background-color: var(--primary);
+    border-radius: 8px;
+    height: 70%;
     transition: 0.5s;
   }
 }

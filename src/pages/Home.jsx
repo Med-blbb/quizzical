@@ -10,6 +10,7 @@ import { Link } from "react-router-dom";
 import Loader from "../components/Loader";
 import "../components/LoaderStyle.css";
 import "../components/HomeStyle.css";
+import ThemeToggle from "../components/ThemeToggle";
 
 const Home = () => {
   const dispatch = useDispatch();
@@ -22,11 +23,18 @@ const Home = () => {
   const [selectedCategory, setSelectedCategory] = useState(SelectedCat);
   const [selectedDifficulty, setselectedDifficulty] = useState(selectedDiff);
   const [selectAmount, setSelectedAmount] = useState(selectAm);
+  const theme = useSelector((state) => state.quiz.theme);
   useEffect(() => {
     setTimeout(async () => {
       dispatch(getCategories());
     }, 2000);
   }, []);
+  useEffect(() => {
+    console.log("Current Theme:", theme);
+    document.body.classList.toggle("light-mode", theme === "light");
+    document.body.classList.toggle("dark-mode", theme === "dark");
+  }, [theme]);
+
   const handleDifficultyChange = (e) => {
     const selectedValue = e.target.value;
     setselectedDifficulty(selectedValue);
@@ -47,14 +55,19 @@ const Home = () => {
       {loading ? (
         <Loader />
       ) : (
-        <div className="home">
-          <div className="nav-bar-home">
-            <h1>
-              Qui<span>zz</span>ical
-            </h1>
+        <div className={`home-${theme}`}>
+          <div className={`nav-bar-home-${theme}`}>
+            <div>
+              <h1>
+                Qui<span>zz</span>ical
+              </h1>
+            </div>
+            <div className="theme-position">
+              <ThemeToggle />
+            </div>
           </div>
 
-          <div className="all-card">
+          <div className={`all-card-${theme}`}>
             {categories.map((cat) => (
               <div
                 className="card"
