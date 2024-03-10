@@ -34,6 +34,7 @@ body {
   object-fit: cover;
   border-radius: 25px;
 }
+
 .cat-card-light {
   display: flex;
   width: 600px;

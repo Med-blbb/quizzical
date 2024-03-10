@@ -11,6 +11,8 @@ import Loader from "../components/Loader";
 import "../components/LoaderStyle.css";
 import "../components/HomeStyle.css";
 import ThemeToggle from "../components/ThemeToggle";
+import { FaGithub } from "react-icons/fa";
+
 
 const Home = () => {
   const dispatch = useDispatch();
@@ -64,6 +66,13 @@ const Home = () => {
             </div>
             <div className="theme-position">
               <ThemeToggle />
+            </div>
+            <div className="github">
+              <a href="https://github.com/Med-blbb/quizzicalv2" target="_blank">
+                <h1>
+                  <FaGithub />
+                </h1>
+              </a>
             </div>
           </div>
 

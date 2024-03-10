@@ -13,6 +13,7 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import "../components/CategoryStyle.css";
 import ThemeToggle from "../components/ThemeToggle";
+import { FaGithub } from "react-icons/fa";
 
 export default function Category() {
   const { id } = useParams();
@@ -89,6 +90,13 @@ export default function Category() {
             </div>
             <div className="theme-position">
               <ThemeToggle />
+            </div>
+            <div className="github">
+              <a href="https://github.com/Med-blbb/quizzicalv2" target="_blank">
+                <h1>
+                  <FaGithub />
+                </h1>
+              </a>
             </div>
           </div>
           <div className={`cat-card-${theme}`}>

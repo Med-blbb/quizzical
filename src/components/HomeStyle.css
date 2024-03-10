@@ -45,6 +45,17 @@
   color: var(--text);
   border-bottom: 1px solid var(--primary);
 }
+.github{
+  position: absolute;
+  left: 20px;
+}
+.github a{
+  text-decoration: none;
+  color: var(--text);
+}
+.github a:hover{
+  color: var(--primary) ;
+}
 .theme-position{
   position: absolute;
   right: 20px;

@@ -11,6 +11,7 @@ import { Link, useParams } from "react-router-dom";
 import "../components/QuizStyle.css";
 import { Box, Button, Modal, Typography } from "@mui/material";
 import ThemeToggle from "../components/ThemeToggle";
+import { FaGithub } from "react-icons/fa";
 
 export default function Quiz() {
   const dispatch = useDispatch();
@@ -173,6 +174,13 @@ export default function Quiz() {
             </div>
             <div className="theme-position">
               <ThemeToggle />
+            </div>
+            <div className="github">
+              <a href="https://github.com/Med-blbb/quizzicalv2" target="_blank">
+                <h1>
+                  <FaGithub />
+                </h1>
+              </a>
             </div>
           </div>
           <div className="questions-container">{questionsElements}</div>
