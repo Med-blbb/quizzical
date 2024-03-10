@@ -13,7 +13,14 @@ import { Box, Button, Modal, Typography } from "@mui/material";
 import ThemeToggle from "../components/ThemeToggle";
 import { FaGithub } from "react-icons/fa";
 
+const decodeString = (encodedString) => {
+  const textarea = document.createElement("textarea");
+  textarea.innerHTML = encodedString;
+  return textarea.value;
+};
 export default function Quiz() {
+  const encodedString = "&#039;  &quot;";
+  const decodedString = decodeString(encodedString);
   const dispatch = useDispatch();
   const { id, difficulty, amount } = useParams();
   const theme = useSelector((state) => state.quiz.theme);
@@ -107,6 +114,10 @@ export default function Quiz() {
       setShowResult(true);
     }
   }
+  function closeModal() {
+    setShowWarning(false);
+    setShowResult(false);
+  }
 
   function playAgain() {
     dispatch(changeQuestions([]));
@@ -126,9 +137,11 @@ export default function Quiz() {
   let abcd = ["a", "b", "c", "d"];
   const questionsElements = QandA.map((questionObject, index) => (
     <div key={index} className={`question-${theme}`}>
-      <h3>
-        {index + 1} - {questionObject.question}
-      </h3>
+      <h3
+        dangerouslySetInnerHTML={{
+          __html: `${index + 1} - ${questionObject.question}`,
+        }}
+      />
       <div className={`button-group-${theme}`}>
         {questionObject.shuffledAnswers.map((answer, answerIndex) => (
           <button
@@ -166,6 +179,7 @@ export default function Quiz() {
         <Loader />
       ) : (
         <div className={`all-quiz-${theme}`}>
+          <div dangerouslySetInnerHTML={{ __html: decodedString }} />
           <div className={`nav-bar-home-${theme}`}>
             <div>
               <h1>
