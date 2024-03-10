@@ -166,7 +166,11 @@ export default function Quiz() {
             }`}
             disabled={showResult}
           >
-            {abcd[answerIndex]} - {answer}
+            <span
+              dangerouslySetInnerHTML={{
+                __html: `${abcd[answerIndex]} - ${answer}`,
+              }}
+            />
           </button>
         ))}
       </div>
