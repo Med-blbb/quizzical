@@ -217,9 +217,7 @@ body {
   .theme-position {
     width: 20%;
   }
-  .theme-position p {
-    display: none;
-  }
+
   .btn-grp{
     display: flex;
     flex-direction: column-reverse;
