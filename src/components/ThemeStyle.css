@@ -224,12 +224,12 @@
   }
 }
 @media screen and (max-width: 480px) {
-  .theme__icon-part {
-    transform-origin: center center;
+  .theme__icon {
+    transform: translateX(1em);
   }
 
-  .theme__icon-part:nth-child(1) {
-    transform: rotate(0deg) translateY(0.5em);
+  .theme__icon-part {
+    transform-origin: center center;
   }
 
   .theme__icon-part:nth-child(2) {
