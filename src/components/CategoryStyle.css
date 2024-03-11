@@ -215,7 +215,7 @@ body {
     transition: 0.5s;
   }
   .theme-position {
-    width: 85px;
+    width: 20%;
   }
   .theme-position p {
     display: none;
