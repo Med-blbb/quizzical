@@ -14,19 +14,34 @@ const ThemeToggle = () => {
     dispatch(changeTheme(newTheme));
   };
 
-
   return (
-    <div className={`toggle-switch ${theme}`} onClick={switchTheme}>
-      <input
-        type="checkbox"
-        className={`theme-checkbox ${theme}`}
-        onChange={() => {}}
-        checked={theme === "dark"}
-      />
-      <label htmlFor="toggle-switch" className="slider"></label>
-      <p className="light-dark pop">
-        {theme !== "dark" ? "LIGHT MODE" : "DARK MODE"}
-      </p>
+    <div className={`toggle-switch ${theme}`} role="switch" onClick={switchTheme}>
+      <label htmlFor="theme" className="theme">
+        <span className="theme__toggle-wrap">
+          <input
+            id="theme"
+            className="theme__toggle"
+            type="checkbox"
+            role="switch"
+            name="theme"
+            value="dark"
+            checked={theme === "dark"}
+            onChange={switchTheme}
+          />
+          <span className="theme__fill"></span>
+          <span className="theme__icon">
+            <span className="theme__icon-part"></span>
+            <span className="theme__icon-part"></span>
+            <span className="theme__icon-part"></span>
+            <span className="theme__icon-part"></span>
+            <span className="theme__icon-part"></span>
+            <span className="theme__icon-part"></span>
+            <span className="theme__icon-part"></span>
+            <span className="theme__icon-part"></span>
+            <span className="theme__icon-part"></span>
+          </span>
+        </span>
+      </label>
     </div>
   );
 };
