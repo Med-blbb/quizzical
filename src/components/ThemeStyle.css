@@ -223,3 +223,15 @@
     box-shadow: 0 0 0 0.125em var(--primary);
   }
 }
+@media screen and (max-width: 480px) {
+  .theme__icon-part:nth-child(1) {
+    top: 0.1em;
+    left: 0.1em;
+  }
+
+  .theme__icon-part {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+}
